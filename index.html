@@ -1,0 +1,959 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Milo Madolora — Portfolio</title>
+<meta name="description" content="The personal portfolio of Milo Madolora — video, photography, marketing, and web." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f6f2ea;
+    --ink: #111111;
+    --ink-soft: #3a3a3a;
+    --rule: #111111;
+    --muted: #6b6660;
+    --accent: #8a1c1c;
+    --max: 1200px;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); }
+  a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+
+  /* ---------- Masthead ---------- */
+  header.masthead {
+    border-bottom: 1px solid var(--rule);
+    padding-top: 28px;
+    padding-bottom: 14px;
+  }
+  .masthead-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .masthead-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 900;
+    font-size: clamp(48px, 9vw, 120px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin: 18px 0 6px;
+  }
+  .masthead-sub {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(18px, 2.2vw, 26px);
+    color: var(--ink-soft);
+    margin: 0 0 10px;
+  }
+
+  /* ---------- Nav ---------- */
+  nav.toc {
+    border-top: 1px solid var(--rule);
+    border-bottom: 3px double var(--rule);
+    padding: 10px 0;
+    margin-top: 14px;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+  nav.toc ul {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: flex; flex-wrap: wrap; gap: 22px;
+    justify-content: space-between;
+  }
+  nav.toc a {
+    border: none;
+    color: var(--ink);
+  }
+  nav.toc a:hover { color: var(--accent); }
+
+  /* ---------- Generic section ---------- */
+  section {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .section-head {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    align-items: end;
+    gap: 28px;
+    margin-bottom: 36px;
+  }
+  .section-num {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 1;
+    color: var(--accent);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: clamp(34px, 5vw, 56px);
+    line-height: 1;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .section-kicker {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 56px;
+  }
+  .lede {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    line-height: 1.35;
+    color: var(--ink);
+    margin: 0;
+  }
+  .lede::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: 68px;
+    line-height: 0.85;
+    float: left;
+    padding: 6px 10px 0 0;
+    color: var(--accent);
+  }
+  .columns {
+    column-count: 2;
+    column-gap: 36px;
+    column-rule: 1px solid #d8d2c7;
+    font-size: 15.5px;
+    line-height: 1.65;
+  }
+  .columns p { margin-top: 0; }
+
+  /* ---------- Image / media tile ---------- */
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 18px;
+  }
+  .tile {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    background: #e8e1d3;
+    border: 1px solid var(--ink);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--muted);
+  }
+  .tile span.label {
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-style: normal;
+    font-family: 'Inter', sans-serif;
+  }
+  .tile-tall { aspect-ratio: 3 / 4; }
+  .tile-wide { aspect-ratio: 16 / 9; }
+  .tile img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .tile.tile-natural {
+    aspect-ratio: auto;
+    display: block;
+  }
+  .tile.tile-natural img {
+    position: static;
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .tile iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  a.vid {
+    display: block;
+    border: none;
+    position: relative;
+  }
+  a.vid:hover { border: none; }
+  .tile .play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 72px;
+    height: 50px;
+    background: rgba(17, 17, 17, 0.82);
+    border-radius: 10px;
+    z-index: 2;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+  }
+  .tile .play::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 10px 0 10px 16px;
+    border-color: transparent transparent transparent #fff;
+    margin-left: 3px;
+  }
+  a.vid:hover .play { background: var(--accent); }
+  .tile { transition: transform 0.25s ease; }
+  a.vid:hover .tile { transform: scale(1.005); }
+  .span-4 { grid-column: span 4; }
+  .span-6 { grid-column: span 6; }
+  .span-8 { grid-column: span 8; }
+  .span-12 { grid-column: span 12; }
+
+  figure { margin: 0; }
+  figcaption {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+    letter-spacing: 0.04em;
+  }
+  figcaption strong {
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---------- Project blocks ---------- */
+  .project {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 40px;
+    padding: 36px 0;
+    border-top: 1px solid #d8d2c7;
+  }
+  .project:first-of-type { border-top: none; }
+  .project h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 28px;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+  .project .meta {
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+  .project p { margin: 0 0 14px; }
+  .pill-row {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 14px;
+  }
+  .pill {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid var(--ink);
+    padding: 4px 10px;
+  }
+
+  /* ---------- School project list ---------- */
+  .school-lede { margin-bottom: 48px; max-width: 720px; }
+  .project-group { margin-bottom: 40px; }
+  .project-group:last-child { margin-bottom: 0; }
+  .group-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 10px;
+    margin: 0;
+  }
+  .project-list { list-style: none; margin: 0; padding: 0; }
+  .project-list li { border-bottom: 1px solid #d8d2c7; }
+  .project-list a {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 18px 0;
+    border: none;
+    color: var(--ink);
+  }
+  .project-list a:hover { color: var(--accent); border: none; }
+  .proj-text { flex: 1; min-width: 0; }
+  .proj-title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    display: block;
+  }
+  .proj-desc {
+    display: block;
+    margin-top: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--muted);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+  .proj-link {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .project-list a:hover .proj-link { color: var(--accent); }
+
+  /* ---------- Section transitions ---------- */
+  .transition {
+    padding: 56px 32px;
+    text-align: center;
+    border-bottom: 1px solid var(--rule);
+  }
+  .transition p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(20px, 2.8vw, 30px);
+    line-height: 1.3;
+    color: var(--ink-soft);
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* ---------- Colophon (issue back-matter) ---------- */
+  #colophon {
+    background: #ebe4d3;
+    border-bottom: none;
+    padding: 56px 0 64px;
+  }
+  #colophon .col-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 28px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+  }
+  #colophon .col-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 36px;
+  }
+  #colophon .col-grid h5 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 20px;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+  }
+  #colophon .col-grid p {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  #colophon .col-grid a { color: var(--ink); }
+
+  /* ---------- Contact / colophon ---------- */
+  .colophon {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 28px;
+    font-size: 14px;
+  }
+  .colophon h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 8px;
+    font-weight: 500;
+  }
+  footer.foot {
+    padding: 28px 0 40px;
+    font-size: 12px;
+    color: var(--muted);
+    display: flex; justify-content: space-between;
+    letter-spacing: 0.06em;
+  }
+
+  .pullquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(24px, 3vw, 34px);
+    line-height: 1.25;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 28px 0;
+    margin: 36px 0;
+    text-align: center;
+  }
+  .pullquote .by {
+    display: block;
+    font-style: normal;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 14px;
+  }
+
+  .todo {
+    background: #fff3b0;
+    color: #5a4a00;
+    padding: 1px 6px;
+    border-radius: 2px;
+    font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+    font-size: 0.85em;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 820px) {
+    .wrap { padding: 0 20px; }
+    section { padding: 56px 0; }
+    .two-col, .project, .colophon { grid-template-columns: 1fr; gap: 24px; }
+    .columns { column-count: 1; }
+    .section-head { grid-template-columns: 60px 1fr; gap: 16px; }
+    .section-num { font-size: 40px; }
+    .span-4, .span-6, .span-8 { grid-column: span 12; }
+    nav.toc ul { gap: 14px; }
+    .masthead-top { flex-direction: column; gap: 4px; align-items: flex-start; }
+    .project-list a { flex-direction: column; align-items: flex-start; gap: 4px; padding: 14px 0; }
+    .proj-title { font-size: 18px; }
+    #colophon .col-grid { grid-template-columns: 1fr; gap: 24px; }
+    .transition { padding: 40px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ===================== MASTHEAD ===================== -->
+  <header class="masthead">
+    <div class="masthead-top">
+      <span>The Portfolio &middot; 2026 &middot; Issue I</span>
+      <span>Irvine, CA &rarr; Boston, MA</span>
+      <span>Class of 2026</span>
+    </div>
+    <h1 class="masthead-title">Milo Madolora</h1>
+    <p class="masthead-sub">Class of 2026 at LMA, headed to Northeastern. I document my people through video, photography, and design &mdash; and build the systems that let those stories live online.</p>
+
+    <nav class="toc" aria-label="Sections">
+      <ul>
+        <li><a href="#about">00 &middot; About</a></li>
+        <li><a href="#video">01 &middot; Video</a></li>
+        <li><a href="#photo">02 &middot; Photography</a></li>
+        <li><a href="#marketing">03 &middot; Marketing</a></li>
+        <li><a href="#web">04 &middot; The Web</a></li>
+        <li><a href="#school">05 &middot; School Work</a></li>
+        <li><a href="#contact">06 &middot; Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===================== ABOUT ===================== -->
+  <section id="about">
+    <div class="section-head">
+      <div class="section-num">00</div>
+      <div>
+        <div class="section-kicker">An Introduction</div>
+        <h2 class="section-title">About the Author</h2>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <p class="lede">
+        Milo Madolora grew up in Irvine, California, in a Vietnamese-Filipino American family. He is a senior at LMA, Class of 2026, headed to Northeastern University in the fall to study Business Administration &mdash; and he spends most of his time behind a camera, in front of a timeline, or somewhere in the middle of a marketing brief.
+      </p>
+      <div class="columns">
+        <p>I was always surrounded by culture growing up. From that inspiration, I wanted to document and share what makes my people special &mdash; to capture these moments before they pass.</p>
+        <p>As I gear up for college and the workforce, I'm honing the toolkit: photography, videography, and design. I'm drawn to projects that turn a classroom, a backyard, or a senior class into something worth keeping.</p>
+        <p>Looking for a summer job, connecting with people interested in innovation, and building something amazing.</p>
+      </div>
+    </div>
+
+    <div class="pullquote">
+      &ldquo;Put yourself in situations where you're not comfortable.&rdquo;
+      <span class="by">&mdash; LeBron James's favorite saying</span>
+    </div>
+  </section>
+
+  <!-- ===================== VIDEO ===================== -->
+  <section id="video">
+    <div class="section-head">
+      <div class="section-num">01</div>
+      <div>
+        <div class="section-kicker">Reel &amp; Edits</div>
+        <h2 class="section-title">Video</h2>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-bottom: 36px;">
+      <p class="lede">
+        Cuts, shorts, reels, and the occasional long-form piece. Edited primarily in Premiere.
+      </p>
+      <div class="columns">
+        <p>My favorite stories to tell are the ones about the people I surround myself with. Through videography, I believe some of the brightest moments of my life can be captured.</p>
+        <p>My favorite project recently has been the <em>Class of 2026 Senior Video</em>. As I was crafting this project, I had a deep feeling of gratitude for the time I spent with my classmates.</p>
+      </div>
+    </div>
+
+    <div class="tiles" style="margin-bottom: 24px;">
+      <figure class="span-12">
+        <a class="vid" href="https://youtu.be/iP06NzZrDZA" target="_blank" rel="noopener">
+          <div class="tile tile-wide">
+            <img src="https://img.youtube.com/vi/iP06NzZrDZA/maxresdefault.jpg"
+                 onerror="this.onerror=null;this.src='https://img.youtube.com/vi/iP06NzZrDZA/hqdefault.jpg';"
+                 alt="" loading="lazy" />
+            <span class="play" aria-hidden="true"></span>
+          </div>
+        </a>
+        <figcaption><strong>Featured &mdash; Class of 2026 Senior Video</strong> &middot; A celebration of LMA's graduating class of 2026. &middot; <a href="https://youtu.be/iP06NzZrDZA" target="_blank" rel="noopener">Watch on YouTube &nearr;</a></figcaption>
+      </figure>
+
+      <figure class="span-6">
+        <a class="vid" href="https://youtu.be/vWTp99aXQNU" target="_blank" rel="noopener">
+          <div class="tile tile-wide">
+            <img src="https://img.youtube.com/vi/vWTp99aXQNU/maxresdefault.jpg"
+                 onerror="this.onerror=null;this.src='https://img.youtube.com/vi/vWTp99aXQNU/hqdefault.jpg';"
+                 alt="" loading="lazy" />
+            <span class="play" aria-hidden="true"></span>
+          </div>
+        </a>
+        <figcaption><strong>Senior Denim Dinner</strong> &middot; Montage of one of the last senior events. &middot; <a href="https://youtu.be/vWTp99aXQNU" target="_blank" rel="noopener">Watch &nearr;</a></figcaption>
+      </figure>
+
+      <figure class="span-6">
+        <a class="vid" href="https://youtu.be/XZDrVbRJ7_A" target="_blank" rel="noopener">
+          <div class="tile tile-wide">
+            <img src="https://img.youtube.com/vi/XZDrVbRJ7_A/maxresdefault.jpg"
+                 onerror="this.onerror=null;this.src='https://img.youtube.com/vi/XZDrVbRJ7_A/hqdefault.jpg';"
+                 alt="" loading="lazy" />
+            <span class="play" aria-hidden="true"></span>
+          </div>
+        </a>
+        <figcaption><strong>Where Will I Be in 10 Years?</strong> &middot; Where is the class of 2026 going after high school? &middot; <a href="https://youtu.be/XZDrVbRJ7_A" target="_blank" rel="noopener">Watch &nearr;</a></figcaption>
+      </figure>
+
+      <figure class="span-6">
+        <a class="vid" href="https://youtu.be/8n-IYu4Jq9Q" target="_blank" rel="noopener">
+          <div class="tile tile-wide">
+            <img src="https://img.youtube.com/vi/8n-IYu4Jq9Q/hqdefault.jpg"
+                 alt="" loading="lazy" />
+            <span class="play" aria-hidden="true"></span>
+          </div>
+        </a>
+        <figcaption><strong>The Challenger</strong> &middot; An innovative take on the samurai genre. &middot; <a href="https://youtu.be/8n-IYu4Jq9Q" target="_blank" rel="noopener">Watch &nearr;</a></figcaption>
+      </figure>
+
+      <figure class="span-6">
+        <a class="vid" href="https://youtu.be/DdzFOMR6LMY" target="_blank" rel="noopener">
+          <div class="tile tile-wide">
+            <img src="https://img.youtube.com/vi/DdzFOMR6LMY/hqdefault.jpg"
+                 alt="" loading="lazy" />
+            <span class="play" aria-hidden="true"></span>
+          </div>
+        </a>
+        <figcaption><strong>Josue Guzman</strong> &middot; Documenting a snapshot of Josue Guzman's life. &middot; <a href="https://youtu.be/DdzFOMR6LMY" target="_blank" rel="noopener">Watch &nearr;</a></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="transition wrap">
+    <p>&ldquo;What I can't film, I photograph.&rdquo;</p>
+  </div>
+
+  <!-- ===================== PHOTOGRAPHY ===================== -->
+  <section id="photo">
+    <div class="section-head">
+      <div class="section-num">02</div>
+      <div>
+        <div class="section-kicker">Stills</div>
+        <h2 class="section-title">Photography</h2>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-bottom: 36px;">
+      <p class="lede">
+        Selected frames from around home and beyond &mdash; the people, the moments, and a few late-day skies.
+      </p>
+      <div class="columns">
+        <p>As a photographer, I look for emotion in photos, whether it be the gradient of a beautiful sunset or the jubilation of winning.</p>
+        <p>I shoot on a Canon G16, Nikon D3100, or Leica mini II &mdash; both film and digital.</p>
+      </div>
+    </div>
+
+    <div class="tiles">
+      <figure class="span-12">
+        <div class="tile tile-wide">
+          <img src="photos/IMG_0412.jpg" alt="Beach at sunset, pink and orange sky" loading="lazy" />
+        </div>
+        <figcaption><strong>Crescent Bay</strong> &mdash; 2026.</figcaption>
+      </figure>
+
+      <figure class="span-8">
+        <div class="tile tile-wide">
+          <img src="photos/IMG_0059.jpg" alt="Two friends in front of a sunset" loading="lazy" />
+        </div>
+        <figcaption><strong>Golden hour</strong> &mdash; after a tradeshow DJ set.</figcaption>
+      </figure>
+      <figure class="span-4">
+        <div class="tile tile-tall">
+          <img src="photos/IMG_0136.jpg" alt="Karaoke night, neon lighting" loading="lazy" />
+        </div>
+        <figcaption><strong>Karaoke night</strong></figcaption>
+      </figure>
+
+      <figure class="span-4">
+        <div class="tile tile-wide">
+          <img src="photos/DSC_0278.jpg" alt="Backyard gathering at dusk" loading="lazy" />
+        </div>
+        <figcaption><strong>Backyard, blue hour</strong></figcaption>
+      </figure>
+      <figure class="span-4">
+        <div class="tile tile-wide">
+          <img src="photos/IMG_0100.jpg" alt="At the stadium" loading="lazy" />
+        </div>
+        <figcaption><strong>At the stadium</strong> &mdash; NFC Championship Watch Party, 2026.</figcaption>
+      </figure>
+      <figure class="span-4">
+        <div class="tile tile-wide">
+          <img src="photos/IMG_0284.jpg" alt="Senior Day, LMA Track and Field" loading="lazy" />
+        </div>
+        <figcaption><strong>Senior Day</strong> &mdash; LMA Track &amp; Field, Class of 2026.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===================== MARKETING ===================== -->
+  <section id="marketing">
+    <div class="section-head">
+      <div class="section-num">03</div>
+      <div>
+        <div class="section-kicker">Field Notes</div>
+        <h2 class="section-title">Marketing</h2>
+      </div>
+    </div>
+
+    <div class="two-col" style="margin-bottom: 36px;">
+      <p class="lede">
+        Notes from the field &mdash; a marketing internship at the Vietnamese Film Festival, two virtual enterprise companies, a club I founded at LMA, and freelance branding work.
+      </p>
+      <div class="columns">
+        <p>The Vietnamese Film Festival is a nonprofit organization focused on celebrating Vietnamese storytelling, filmmakers, and culture through annual film screenings, community events, and creative programming. The team works across media, outreach, partnerships, and digital promotion to connect audiences with independent Asian and Vietnamese cinema while expanding cultural representation in film.</p>
+        <p>As a marketing intern, I worked on digital branding, promotional content, and audience engagement across multiple campaigns tied to the festival's programming and social presence. I collaborated with designers, coordinators, and other interns to create marketing assets, organize content calendars, and help maintain a consistent visual identity online. My work included developing graphics, editing short-form promotional content, and supporting campaign rollouts designed to increase awareness and engagement before festival events.</p>
+      </div>
+    </div>
+
+    <article class="project">
+      <div>
+        <div class="meta">Summer 2025 &middot; Marketing Intern</div>
+        <h3>Vietnamese Film Festival &mdash; Marketing Internship</h3>
+        <p>Owned execution on multiple digital campaigns leading up to the festival &mdash; designing post series, coordinating with creative leads on visual identity, and helping organize content calendars across Instagram and the festival's outreach platforms.</p>
+        <div class="pill-row">
+          <span class="pill">Brand Strategy</span>
+          <span class="pill">Social Media</span>
+          <span class="pill">Graphic Design</span>
+          <span class="pill">Content Strategy</span>
+        </div>
+      </div>
+      <div>
+        <ul style="padding-left: 18px; margin: 0;">
+          <li>Designed and scheduled <span class="todo">[number, e.g. 20+]</span> promotional graphics and post series across the festival's Instagram and announcement channels in Canva and Adobe Creative Suite.</li>
+          <li>Built and managed content calendars across multiple campaigns, coordinating asset handoffs with the marketing lead, creative team, and event coordinators.</li>
+          <li>Edited short-form promotional videos and motion graphics for screening announcements and festival-week countdowns.</li>
+          <li>Tracked Instagram analytics across campaigns to flag what was driving engagement and where to push next &mdash; feedback used to tighten subsequent post series.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="project">
+      <div>
+        <div class="meta">Additional Work</div>
+        <h3>On Campus &amp; Freelance</h3>
+        <p>Building from scratch &mdash; a club, two virtual enterprise teams, and freelance work for a local business.</p>
+      </div>
+      <div>
+        <ul style="padding-left: 18px; margin: 0;">
+          <li><strong>Filipino Club at LMA</strong> &mdash; Founder. Founded, organized, and ran a student-led cultural club focused on building community, celebrating Filipino culture, and creating events that increased student involvement on campus.</li>
+          <li><strong>Siply</strong> &mdash; Marketing &amp; Branding. Developed branding concepts, promotional content, and social media direction for a student-run beverage startup focused on modern drink culture and youth marketing.</li>
+          <li><strong>VitaPearls Virtual Enterprise</strong> &mdash; Sales Representative. Led sales strategy and product marketing for a healthier boba-focused virtual enterprise company, contributing to branding presentations, outreach, and pitch development.</li>
+          <li><strong>M&amp;N Detailing</strong> &mdash; Branding &amp; Content. Produced branding materials, social media content, and promotional visuals for a local detailing business to help improve online presence and customer outreach.</li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <!-- ===================== WEB / CLASS OF 2026 ===================== -->
+  <section id="web">
+    <div class="section-head">
+      <div class="section-num">04</div>
+      <div>
+        <div class="section-kicker">On the Web</div>
+        <h2 class="section-title">Built &amp; Shipped</h2>
+      </div>
+    </div>
+
+    <article class="project">
+      <div>
+        <div class="meta">Featured Build &middot; 2026</div>
+        <h3>The Class of 2026 Website</h3>
+        <p><a href="https://milomadatu.github.io/lma-class-of-2026" target="_blank" rel="noopener">milomadatu.github.io/lma-class-of-2026 &nearr;</a></p>
+        <p>A digital archive of the LMA senior class &mdash; 101 biographies, headshots, and class statistics, organized into one browsable site.</p>
+        <div class="pill-row">
+          <span class="pill">Information Architecture</span>
+          <span class="pill">Editorial Direction</span>
+          <span class="pill">GitHub Pages</span>
+        </div>
+      </div>
+      <div>
+        <figure>
+          <a href="https://milomadatu.github.io/lma-class-of-2026" target="_blank" rel="noopener" class="vid">
+            <div class="tile tile-natural">
+              <img src="LMAClassof2026Website.png" alt="Screenshot of the LMA Class of 2026 website" loading="lazy" />
+            </div>
+          </a>
+          <figcaption><strong>Class of 2026</strong> &mdash; Collecting bios and headshots for all 101 seniors in one place.</figcaption>
+        </figure>
+        <p style="margin-top: 18px;">Conceived as a living yearbook for LMA, the site is a structured archive built to outlast the printed program. Designed the information model &mdash; how a senior, a biography, a photo, and a stat connect &mdash; then ran the operation to fill it: tracking down all 101 classmates, collecting every headshot, and shipping the result to GitHub Pages where it lives publicly.</p>
+      </div>
+    </article>
+  </section>
+
+  <div class="transition wrap">
+    <p>&ldquo;Built outside the classroom. Studied inside it.&rdquo;</p>
+  </div>
+
+  <!-- ===================== SCHOOL PROJECTS ===================== -->
+  <section id="school">
+    <div class="section-head">
+      <div class="section-num">05</div>
+      <div>
+        <div class="section-kicker">From the Coursework</div>
+        <h2 class="section-title">School Projects</h2>
+      </div>
+    </div>
+
+    <p class="lede school-lede">
+      Selected coursework &mdash; papers, case studies, slide decks, and spreadsheets from LMA classrooms and dual enrollment at Irvine Valley College.
+    </p>
+
+    <div class="project-group">
+      <h3 class="group-heading">LMA</h3>
+      <ul class="project-list">
+        <li><a href="projects/lma/CycleBright%201.0%20Slides.pdf" target="_blank" rel="noopener">
+          <span class="proj-text">
+            <span class="proj-title">CycleBright 1.0 Slides</span>
+            <span class="proj-desc">Pitch deck for a combined light and dashcam built for ebikes &mdash; product design, target rider, and brand positioning for a connected-safety device.</span>
+          </span>
+          <span class="proj-link">View PDF &nearr;</span>
+        </a></li>
+        <li><a href="projects/lma/FTX%20Bankruptcy%20Case%20Study.pdf" target="_blank" rel="noopener">
+          <span class="proj-text">
+            <span class="proj-title">FTX Bankruptcy Case Study</span>
+            <span class="proj-desc">Anatomy of one of crypto's most public collapses &mdash; what FTX did, what governance failed, and what the failure reveals about trust in financial infrastructure.</span>
+          </span>
+          <span class="proj-link">View PDF &nearr;</span>
+        </a></li>
+        <li><a href="projects/lma/Family%2C%20Feminism%2C%20%26%20Identity_%20The%20Tattoos%20of%20Miss%20Mia.pdf" target="_blank" rel="noopener">
+          <span class="proj-text">
+            <span class="proj-title">Family, Feminism, &amp; Identity: The Tattoos of Miss Mia</span>
+            <span class="proj-desc">A close reading of the tattoos of Miss Mia, a front-office staff member at Legacy Magnet Academy &mdash; body art as primary source for family, feminism, and self-authorship.</span>
+          </span>
+          <span class="proj-link">View PDF &nearr;</span>
+        </a></li>
+        <li><a href="projects/lma/Milo%20-%20How%20Digital%20Photography%20is%20Changing%20the%20World.pdf" target="_blank" rel="noopener">
+          <span class="proj-text">
+            <span class="proj-title">How Digital Photography is Changing the World</span>
+            <span class="proj-desc">On how digital cameras reshaped who gets to make pictures &mdash; and what pictures get made.</span>
+          </span>
+          <span class="proj-link">View PDF &nearr;</span>
+        </a></li>
+        <li><a href="projects/lma/Milo%20-%20Trade%20Show%20Shopping%20.pdf" target="_blank" rel="noopener">
+          <span class="proj-text">
+            <span class="proj-title">Trade Show Shopping</span>
+            <span class="proj-desc">Fieldwork from inside a trade show &mdash; what gets sold, how brands stage themselves to buyers, and what an outsider learns about wholesale culture.</span>
+          </span>
+          <span class="proj-link">View PDF &nearr;</span>
+        </a></li>
+        <li><a href="projects/lma/The%20Life%20Of%20Kanye.pdf" target="_blank" rel="noopener">
+          <span class="proj-text">
+            <span class="proj-title">The Life Of Kanye</span>
+            <span class="proj-desc">A biographical study tracing the artist behind one of the defining catalogs of his generation.</span>
+          </span>
+          <span class="proj-link">View PDF &nearr;</span>
+        </a></li>
+        <li><a href="projects/lma/VitaPearls%20Sales%20Product%20Line%20and%20Pricing%20Presentation.pptx" target="_blank" rel="noopener">
+          <span class="proj-text">
+            <span class="proj-title">VitaPearls Sales Product Line &amp; Pricing</span>
+            <span class="proj-desc">Sales presentation for a healthier-boba virtual enterprise &mdash; product line, pricing strategy, and go-to-market positioning.</span>
+          </span>
+          <span class="proj-link">View Slides &nearr;</span>
+        </a></li>
+        <li><a href="projects/lma/Wear%20It%20Forward%20-%20Civic%20Action%20Project.pdf" target="_blank" rel="noopener">
+          <span class="proj-text">
+            <span class="proj-title">Wear It Forward &mdash; Civic Action Project</span>
+            <span class="proj-desc">A civic-action project connecting one non-profit's surplus textiles with another non-profit that needs them &mdash; turning waste from one place into supply for another.</span>
+          </span>
+          <span class="proj-link">View PDF &nearr;</span>
+        </a></li>
+        <li><a href="projects/lma/Year-End%20Sales%20Report.xlsx" target="_blank" rel="noopener">
+          <span class="proj-text">
+            <span class="proj-title">Year-End Sales Report</span>
+            <span class="proj-desc">Full-year financial summary for a virtual enterprise team &mdash; units sold, revenue trends, and category breakdowns.</span>
+          </span>
+          <span class="proj-link">View Spreadsheet &nearr;</span>
+        </a></li>
+      </ul>
+    </div>
+
+    <div class="project-group">
+      <h3 class="group-heading">IVC &middot; Irvine Valley College</h3>
+      <ul class="project-list">
+        <li><a href="projects/ivc/Environmental%20Spheres_%20How%20Planet%20Earth%20Works.pdf" target="_blank" rel="noopener">
+          <span class="proj-text">
+            <span class="proj-title">Environmental Spheres: How Planet Earth Works</span>
+            <span class="proj-desc">An introduction to Earth's interlocking systems &mdash; atmosphere, hydrosphere, geosphere, biosphere &mdash; and how a change in one ripples through the rest.</span>
+          </span>
+          <span class="proj-link">View PDF &nearr;</span>
+        </a></li>
+        <li><a href="projects/ivc/Sonic%20Freedom_%20Kanye%20West%27s%20_Ghost%20Town_.pdf" target="_blank" rel="noopener">
+          <span class="proj-text">
+            <span class="proj-title">Sonic Freedom: Kanye West's &ldquo;Ghost Town&rdquo;</span>
+            <span class="proj-desc">A close listen to one Kanye track &mdash; what the song does musically, and what it lets the listener feel that few others do.</span>
+          </span>
+          <span class="proj-link">View PDF &nearr;</span>
+        </a></li>
+        <li><a href="projects/ivc/Wandering%20Through%20the%20Demands%20of%20Life.pdf" target="_blank" rel="noopener">
+          <span class="proj-text">
+            <span class="proj-title">Wandering Through the Demands of Life</span>
+            <span class="proj-desc">An essay built around a Spotify playlist &mdash; the songs sequenced as a narrative on the daily demands of being a person.</span>
+          </span>
+          <span class="proj-link">View PDF &nearr;</span>
+        </a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section id="contact">
+    <div class="section-head">
+      <div class="section-num">06</div>
+      <div>
+        <div class="section-kicker">Get in Touch</div>
+        <h2 class="section-title">Contact</h2>
+      </div>
+    </div>
+
+    <div class="colophon">
+      <div>
+        <h4>Email</h4>
+        <p>
+          <a href="mailto:madolora.m@northeastern.edu">madolora.m@northeastern.edu</a><br/>
+          <a href="mailto:mkmadolora@gmail.com">mkmadolora@gmail.com</a>
+        </p>
+      </div>
+      <div>
+        <h4>Elsewhere</h4>
+        <p>
+          <a href="https://www.instagram.com/milomadatu/" target="_blank" rel="noopener">Instagram &mdash; @milomadatu</a><br/>
+          <a href="https://www.linkedin.com/in/milo-madolora" target="_blank" rel="noopener">LinkedIn &mdash; milo-madolora</a><br/>
+          <a href="https://www.youtube.com/@milomadatu" target="_blank" rel="noopener">YouTube &mdash; @milomadatu</a><br/>
+          <a href="https://github.com/milomadatu" target="_blank" rel="noopener">GitHub &mdash; milomadatu</a>
+        </p>
+      </div>
+      <div>
+        <h4>Currently</h4>
+        <p>Gearing up for college and looking for job opportunities and situations to learn from.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== COLOPHON ===================== -->
+  <section id="colophon">
+    <h4 class="col-title">Colophon &middot; About this Issue</h4>
+    <div class="col-grid">
+      <div>
+        <h5>Credits</h5>
+        <p>Written and directed by Milo Madolora. Development assistance from Claude (Anthropic). The Class of 2026 archive was AI-assisted in code; all 101 biographies and headshots were collected by Milo.</p>
+      </div>
+      <div>
+        <h5>Set in</h5>
+        <p>Playfair Display &amp; Inter. Built as a single HTML file. Hosted on GitHub Pages.</p>
+      </div>
+      <div>
+        <h5>Next Issue</h5>
+        <p>TBD &mdash; from Boston.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>&copy; 2026 Milo Madolora</span>
+    <span>The Portfolio &middot; 2026 &middot; Issue I</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
